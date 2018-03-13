@@ -1,0 +1,75 @@
+﻿<Window x:Class="MojaBiblioteczka.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MojaBiblioteczka"
+        xmlns:ViewModel="clr-namespace:MojaBiblioteczka.ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="650" Width="1480">
+    <Window.DataContext>
+        <ViewModel:BiblioteczkaViewModel/>
+    </Window.DataContext>
+    <Grid Margin="0,0,-0.4,-29.4">
+        <GridSplitter HorizontalAlignment="Left" Height="860" Margin="740,0,0,0" VerticalAlignment="Top" Width="5"/>
+        <Label Content="KSIĄŻKA" HorizontalAlignment="Right" Margin="0,10,1360,0" VerticalAlignment="Top" Width="90"/>
+        <Label Content="ROZDZIAŁ" HorizontalAlignment="Left" Margin="750,10,0,0" VerticalAlignment="Top" Width="90"/>
+        <DataGrid HorizontalAlignment="Left" Height="234" Margin="40,368,0,0" VerticalAlignment="Top" Width="695" IsReadOnly="True" x:Name="WszystkieKsiazki" ItemsSource="{Binding WszystkieKsiazkiEF}"/>
+        <Button Content="Pokaz wszystkie ksiazki DB" HorizontalAlignment="Left" Margin="40,40,0,0" VerticalAlignment="Top" Width="160" Height="30" Command="{Binding PokazWszystkieKsiazkiEFCommand}"/>
+        <Button Content="Ksiazki z DB o ocenie powyzej:" HorizontalAlignment="Left" Margin="40,80,0,0" VerticalAlignment="Top" Height="30" Width="160" FontSize="11" Command="{Binding PokazKsiazkiOcenaEFCommand}"/>
+        <TextBox HorizontalAlignment="Left" Height="30" Margin="40,120,0,0" TextWrapping="Wrap" Text="{Binding WybranaOcenaEF, Mode=TwoWay}" VerticalAlignment="Top" Width="160" />
+        <Button Content="Usuń książkę z DB o ID:" HorizontalAlignment="Left" Margin="40,160,0,0" VerticalAlignment="Top" Width="160" Height="30" FontSize="11" Command="{Binding UsunKsiazkeEFCommand}"/>
+        <TextBox HorizontalAlignment="Left" Height="30" Margin="40,200,0,0" TextWrapping="Wrap" Text="{Binding UsuwaneIDEF, Mode=TwoWay}"  VerticalAlignment="Top" Width="160"/>
+        <Button Content="Edytuj ocenę książki z DB o ID:" HorizontalAlignment="Left" Margin="40,240,0,0" VerticalAlignment="Top" Width="160" Height="30" FontSize="11" Command="{Binding EdytujOceneKsiazkiEFCommand}"/>
+        <TextBox HorizontalAlignment="Left" Height="30" Margin="40,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Text="{Binding WybraneIDEF, Mode=TwoWay}"/>
+        <Label Content="Nowa ocena:" HorizontalAlignment="Left" Margin="40,320,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="20" Margin="124,320,0,0" TextWrapping="Wrap" Text="{Binding NowaOcenaEF, Mode=TwoWay}" VerticalAlignment="Top" Width="75" AutomationProperties.HelpText="Nowa"/>
+
+        <Button Content="Pokaz wszystkie ksiazki XML" HorizontalAlignment="Left" Margin="210,40,0,0" VerticalAlignment="Top" Width="160" Height="30" Command="{Binding PokazWszystkieKsiazkiXMLCommand}"/>
+        <Button Content="Ksiazki z XML o ocenie powyzej:" HorizontalAlignment="Left" Margin="210,80,0,0" VerticalAlignment="Top" Height="30" Width="160" FontSize="11" Command="{Binding PokazKsiazkiOcenaXMLCommand}"/>
+        <TextBox HorizontalAlignment="Left" Height="30" Margin="210,120,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="160" Text="{Binding WybranaOcenaXML, Mode=TwoWay}"/>
+        <Button Content="Usuń książkę z XML o ID:" HorizontalAlignment="Left" Margin="210,160,0,0" VerticalAlignment="Top" Width="160" Height="30" FontSize="11" Command="{Binding UsunKsiazkeXMLCommand}"/>
+        <TextBox HorizontalAlignment="Left" Height="30" Margin="210,200,0,0" TextWrapping="Wrap"  Text="{Binding UsuwaneIDXML, Mode=TwoWay}" VerticalAlignment="Top" Width="160"/>
+        <Button Content="Edytuj ocenę książki z XML o ID:" HorizontalAlignment="Left" Margin="210,240,0,0" VerticalAlignment="Top" Width="160" Height="30" FontSize="11" Command="{Binding EdytujOceneKsiazkiXMLCommand}"/>
+        <TextBox HorizontalAlignment="Left" Height="30" Margin="210,280,0,0" TextWrapping="Wrap" Text="{Binding WybraneIDXML, Mode=TwoWay}" VerticalAlignment="Top" Width="160"/>
+        <Label Content="Nowa ocena:" HorizontalAlignment="Left" Margin="210,320,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="20" Margin="290,320,0,0" TextWrapping="Wrap" Text="{Binding NowaOcenaXML, Mode=TwoWay}" VerticalAlignment="Top" Width="75" AutomationProperties.HelpText="Nowa ocena"/>
+
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="270" Margin="375,40,0,0" Stroke="Black" VerticalAlignment="Top" Width="360"/>
+        <Label Content="Nowa książka" HorizontalAlignment="Left" Margin="375,10,0,0" VerticalAlignment="Top" Width="145"/>
+        <Label Content="Tytuł:" HorizontalAlignment="Left" Margin="375,40,0,0" VerticalAlignment="Top"/>
+        <Label Content="Imię autora:" HorizontalAlignment="Left" Margin="375,80,0,0" VerticalAlignment="Top"/>
+        <Label Content="Nazwisko autora:" HorizontalAlignment="Left" Margin="375,120,0,0" VerticalAlignment="Top"/>
+        <Label Content="Ocena książki od 0,0 do 5,0" HorizontalAlignment="Left" Margin="375,160,0,0" VerticalAlignment="Top"/>
+
+        <TextBox HorizontalAlignment="Left" Height="30" Margin="570,45,0,0" TextWrapping="Wrap" Text="{Binding NowyTytul, Mode=TwoWay}" VerticalAlignment="Top" Width="160"/>
+        <TextBox HorizontalAlignment="Left" Height="30" Margin="570,85,0,0" TextWrapping="Wrap" Text="{Binding NowyAutorImie, Mode=TwoWay}" VerticalAlignment="Top" Width="160"/>
+        <TextBox HorizontalAlignment="Left" Height="30" Margin="570,125,0,0" TextWrapping="Wrap" Text="{Binding NowyAutorNazwisko, Mode=TwoWay}" VerticalAlignment="Top" Width="160"/>
+        <TextBox HorizontalAlignment="Left" Height="30" Margin="570,165,0,0" TextWrapping="Wrap" Text="{Binding NowaKsiazkaOcena, Mode=TwoWay}" VerticalAlignment="Top" Width="160"/>
+
+        <Button Content="Dodaj do DB" HorizontalAlignment="Left" Margin="375,320,0,0" VerticalAlignment="Top" Width="160" Height="20" Command="{Binding DodajKsiazkeEFCommand}"/>
+        <Button Content="Dodaj do XML" HorizontalAlignment="Left" Margin="545,320,0,0" VerticalAlignment="Top" Width="160" Height="20" Command="{Binding DodajKsiazkeXMLCommand}"/>
+
+        <DataGrid HorizontalAlignment="Left" Height="234" Margin="771,368,0,0" x:Name="WszystkieRozdzialy" ItemsSource="{Binding WszystkieRozdzialy}" VerticalAlignment="Top" Width="695"/>
+        <Button Content="Usuń rozdzial z DB o ID:" Command="{Binding UsunRozdzialEF}" HorizontalAlignment="Left" Margin="771,80,0,0" VerticalAlignment="Top" Width="160" Height="30" FontSize="11"/>
+        <TextBox HorizontalAlignment="Left" Height="30" Margin="771,120,0,0" TextWrapping="Wrap" Text="{Binding UsuwaneIDEFRozdzialu, Mode=TwoWay}" VerticalAlignment="Top" Width="160"/>
+        <Button Content="Edytuj opis rozdzialu z DB o ID:" Command="{Binding EdytujRozdzialEF}" HorizontalAlignment="Left" Margin="771,160,0,0" VerticalAlignment="Top" Width="160" Height="30" FontSize="11"/>
+        <TextBox HorizontalAlignment="Left" Height="110" Margin="771,230,0,0" TextWrapping="Wrap" Text="{Binding NowaTrescRozdzialu, Mode=TwoWay}" VerticalAlignment="Top" Width="330"/>
+        <TextBox HorizontalAlignment="Left" Height="20" Margin="771,200,0,0" TextWrapping="Wrap" Text="{Binding WybraneIDEFRozdzialu, Mode=TwoWay}" VerticalAlignment="Top" Width="75" AutomationProperties.HelpText="Nowa"/>
+        <Button Content="Usuń rozdział z XML o ID:" Command="{Binding UsunRozdzialXMLCommand}" HorizontalAlignment="Left" Margin="941,80,0,0" VerticalAlignment="Top" Width="160" Height="30" FontSize="11"/>
+        <TextBox HorizontalAlignment="Left" Height="30" Margin="941,120,0,0" TextWrapping="Wrap" Text="{Binding UsuwaneIDXMLRozdzialu, Mode=TwoWay}" VerticalAlignment="Top" Width="160"/>
+        <Button Content="Edytuj opis rozdzialu zXML o ID:" Command="{Binding EdytujRozdzialXML}"  HorizontalAlignment="Left" Margin="941,160,0,0" VerticalAlignment="Top" Width="160" Height="30" FontSize="11"/>
+        <TextBox HorizontalAlignment="Left" Height="20" Margin="941,200,0,0" TextWrapping="Wrap" Text="{Binding WybraneIDXMLRozdzialu, Mode=TwoWay}" VerticalAlignment="Top" Width="75" AutomationProperties.HelpText="Nowa ocena"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="270" Margin="1106,40,0,0" Stroke="Black" VerticalAlignment="Top" Width="360"/>
+        <Label Content="Nowy rozdzial" HorizontalAlignment="Left" Margin="1106,10,0,0" VerticalAlignment="Top" Width="145"/>
+        <Label Content="Opis:" HorizontalAlignment="Left" Margin="1106,59,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="204" Margin="1126,85,0,0" TextWrapping="Wrap" Text="{Binding NoweStreszczenie, Mode=TwoWay}"  VerticalAlignment="Top" Width="310"/>
+        <Button Content="Dodaj do DB" Command="{Binding DodajStreszczenieCommand}" HorizontalAlignment="Left" Margin="1106,320,0,0" VerticalAlignment="Top" Width="160" Height="20"/>
+        <Button Content="Dodaj do XML" Command="{Binding DodajStreszczenieCommandXML}" HorizontalAlignment="Left" Margin="1276,320,0,0" VerticalAlignment="Top" Width="160" Height="20"/>
+        <Label Content="Tytuł z XML:" HorizontalAlignment="Left" Margin="1106,45,0,0" VerticalAlignment="Top" FontSize="9"/>
+        <Label Content="Tytuł z DB:" HorizontalAlignment="Left" Margin="1288,45,0,0" VerticalAlignment="Top" FontSize="9"/>
+        <ComboBox HorizontalAlignment="Left" Margin="1167,50,0,0" VerticalAlignment="Top" Width="120"  ItemsSource="{Binding ListaKsiazekXML}" SelectedItem="{Binding WybranaKsiazkaXML}"/>
+        <ComboBox HorizontalAlignment="Left" Margin="1339,50,0,0" VerticalAlignment="Top" Width="120"  ItemsSource="{Binding ListaKsiazekEF}" SelectedItem="{Binding WybranaKsiazkaEF}"/>
+
+    </Grid>
+</Window>
